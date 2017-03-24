@@ -1,0 +1,110 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+<title> xx的相册 </title>  
+<meta name="description" content="xx的相册">  
+<meta name="keywords" content="xxh,album,相册">  
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">  
+<meta name="app-mobile-web-app-capable" content="yes">   
+</head>  
+<style>  
+.swipe {  
+    overflow: hidden;  
+    visibility: hidden;  
+    position: relative;  
+}  
+.swipe-wrap {  
+    overflow: hidden;  
+    position: relative;  
+}  
+.swipe-wrap > figure {  
+    float: left;  
+    width: 100%;  
+    position: relative;  
+}  
+#slider {  
+    max-width: 650px;/* 设置最大的宽度 */  
+    margin: 0px auto; /* 居中对齐 */  
+}  
+  
+figure {  
+    margin: 0;/* 对齐，四周宽度都为0，在轮播的时候，以整张图片进行移动 */  
+}  
+div.swipe {  
+    border: 1px solid blue;  
+}  
+.page-swipe nav #position {  
+    text-align: center;  
+    list-style: none;  
+    margin: 0;  
+    padding: 0  
+}  
+.page-swipe nav #position li {  
+    display: inline-block;  
+    width: 10px;  
+    height: 10px;  
+    border-radius: 10px;  
+    background: #141414;  
+    box-shadow: inset 0 1px 3px black,0 0 1px 1px #202020;  
+    margin: 0 2px;  
+    cursor: pointer  
+}  
+.page-swipe nav #position li.on {  
+    box-shadow: inset 0 1px 3px -1px #28b4ea,0 1px 2px rgba(0,0,0,.5);  
+    background-color: #1293dc;  
+    background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#1293dc),color-stop(100%,#0f6297));  
+    background-image: -webkit-linear-gradient(top,#1293dc,#0f6297);  
+    background-image: -moz-linear-gradient(top,#1293dc,#0f6297);  
+    background-image: -ms-linear-gradient(top,#1293dc,#0f6297);  
+    background-image: -o-linear-gradient(top,#1293dc,#0f6297);  
+    background-image: linear-gradient(top,#1293dc,#0f6297)  
+}  
+</style>  
+<body class="page-swipe">  
+<div id="slider" class="swipe" style="visibility:visible;">  
+    <div class="swipe-wrap">  
+        <figure>  
+            <div class="face faceInner">  
+                <img src="img/1.JPG" width="100%" height="100%" />  
+            </div>  
+        </figure>  
+        <figure>  
+            <div class="face faceInner">  
+                <img src="img/2.JPG" width="100%" height="100%" />  
+            </div>  
+        </figure>  
+        <figure>  
+            <div class="face faceInner">  
+                <img src="img/3.JPG" width="100%" height="100%" />  
+            </div>  
+        </figure>  
+    </div>  
+</div>  
+  
+<nav>  
+<ul id="position">  
+  <li class="on"></li>  
+  <li class=""></li>  
+  <li class=""></li>  
+</ul>  
+</nav>  
+  
+<script src="js/swipe.js"></script>  
+<script>  
+var slider =  
+  Swipe(document.getElementById('slider'), {  
+    auto: 3000,  
+    continuous: true,  
+    callback: function(pos) {  
+        var i = bullets.length;  
+        while(i--){  
+            bullets[i].className = ' ';  
+        }  
+        bullets[pos].className = 'on';  
+    }  
+  });  
+var bullets = document.getElementById('position').getElementsByTagName('li');  
+</script>  
+</body>  
+</html>  
